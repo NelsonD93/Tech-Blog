@@ -1,1 +1,14 @@
 <h1>This is the dashboard</h1>
+
+<ul>
+{{#each posts as |post|}}
+    <li>
+        <div>
+            <h3>Title: {{post.title}}</h3>
+            <p>{{post.content}}</p>
+        </div>
+    </li>
+
+
+{{/each}}
+</ul>

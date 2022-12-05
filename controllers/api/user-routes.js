@@ -9,13 +9,15 @@ router.get('/',(req,res)=>{
     })
 })
 
-router.post('/',(req,res)=>{
+router.post('/signup',(req,res)=>{
+  console.log(req.body)
     User.create(req.body)
     .then((data)=>{
-    
+    console.log(data)
         res.json(data)
     })
-    .catch(()=>{
+    .catch((err)=>{
+      console.log(err)
         res.json({error:'There is a problem'})
     })
 })
@@ -41,14 +43,15 @@ router.post('/login', async (req, res) => {
         return;
       }
   
-    //   req.session.save(() => {
-    //     req.session.user_id = userData.id;
-    //     req.session.logged_in = true;
+      req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
         
         res.json({ user: userData, message: 'You are now logged in!' });
-    //   });
+      });
   
     } catch (err) {
+      console.log(err)
       res.status(400).json(err);
     }
   });
