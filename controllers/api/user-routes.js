@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
         console.log(validPassword)
       if (!validPassword) {
         res
-          .status(400)
+          .status(401)
           .json({ message: 'Incorrect email or password, please try again' });
         return;
       }
@@ -53,6 +53,17 @@ router.post('/login', async (req, res) => {
     } catch (err) {
       console.log(err)
       res.status(400).json(err);
+    }
+  });
+
+
+  router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
     }
   });
 
