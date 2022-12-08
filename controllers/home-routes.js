@@ -16,4 +16,13 @@ router.get('/signup',(req,res)=>{
     res.render('signup')
 })
 
+router.get('/create', async (req, res) => {
+    try {
+     res.render ('create', { logged_in: req.session.logged_in})
+   
+    } catch (err) {
+         res.status(501).json(err);
+     }
+   });
+
 module.exports = router
