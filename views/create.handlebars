@@ -1,3 +1,17 @@
+<header>
+  <nav>
+    <ul>
+      <li>
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      <li>
+        <a id="logout">Logout</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
 <div class="row align-center mb-5">
   <div class="column">
     <input class="input is-danger m-2" type="text" id="post-name" placeholder="Type Your Post Title Here">
@@ -37,5 +51,5 @@
   };
   document
     .querySelector('#save-btn')
-    .addEventListener('click', makePostFormHandler);
+    .addEventListener('click', createHandler);
 </script>

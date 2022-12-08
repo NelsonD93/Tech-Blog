@@ -15,12 +15,9 @@ const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
 
-        // console.log(`/api/posts/${id}`);
-
         const response = await fetch(`/api/posts/${id}`, {
             method: 'DELETE',
         });
-        // console.log(`/api/posts/${id}`);
 
         if (response.ok) {
 
@@ -84,9 +81,9 @@ const saveEditedPostFormHandler = async (event) => {
 
 // save post event listener
 
-const savPostBtn = document.querySelectorAll('.save-post-btn');
-if (savPostBtn) {
-    savPostBtn.forEach(e => e.addEventListener('click', saveEditedPostFormHandler));
+const saveBtn = document.querySelectorAll('.save-btn');
+if (saveBtn) {
+    saveBtn.forEach(e => e.addEventListener('click', saveEditedPostFormHandler));
 };
 
 
