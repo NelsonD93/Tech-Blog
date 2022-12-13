@@ -1,0 +1,52 @@
+<header>
+  <nav>
+    <ul>
+      <li>
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      <li>
+        <a id="logout">Logout</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+<div class="row align-center mb-5">
+  <div class="column">
+    <input class="input is-danger m-2" type="text" id="post-name" placeholder="Type Your Post Title Here">
+    <textarea class="textarea is-danger m-2" placeholder="Type Your Full Post Here" id="post-description"></textarea>
+
+    <button class="button is-danger m-2" id="save-btn">Save Post</button>
+  </div>
+</div>
+
+<script>
+    const editPostHandler = async (event) => {
+        event.preventDefault();
+        const title = document.querySelector('#post-name').value.trim();
+        const content = document.querySelector('#post-description').value.trim();
+        // if post-text exists
+        if (title && content) {
+            const postBody = {
+                title: title,
+                content: content
+            }
+            const response = await fetch('../api/posts', {
+                method: 'POST',
+                body: JSON.stringify(postBody, post_id: postId),
+                headers: { 'Content-Type': 'application/json' },
+            });
+            console.log(response)
+            if (response.ok) {
+                console.log(response);
+                document.location.replace('/dashboard');
+            } else {
+                alert('Failed to edit post');
+            }
+        }
+    };
+    document
+        .querySelector('#edit-post-btn')
+        .addEventListener('click', editPostFormHandler);
+</script>

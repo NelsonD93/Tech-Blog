@@ -27,15 +27,15 @@
 <script>
   const createHandler = async (event) => {
     event.preventDefault();
-    const post_name = document.querySelector('#post-name').value.trim();
-    const post_description = document.querySelector('#post-description').value.trim();
+    const title = document.querySelector('#post-name').value.trim();
+    const content = document.querySelector('#post-description').value.trim();
     // if post-text exists
-    if (post_name && post_description) {
+    if (title && content) {
       const postBody = {
-        post_name: post_name,
-        post_description: post_description
+        title: title,
+        content: content
       }
-      const response = await fetch('../api/posts', {
+      const response = await fetch('/api/posts', {
         method: 'POST',
         body: JSON.stringify(postBody),
         headers: { 'Content-Type': 'application/json' },

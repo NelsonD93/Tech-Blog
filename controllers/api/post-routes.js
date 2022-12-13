@@ -14,8 +14,8 @@ router.post('/', async (req, res) => {
     try {
       const newPost = await Post.create({
         user_id: req.session.user_id,
-        post_name: req.body.post_name,
-        post_description: req.body.post_description
+        title: req.body.title,
+        content: req.body.content
       });
   
       res.status(200).json(newPost);
@@ -60,8 +60,8 @@ router.post('/', async (req, res) => {
     try {
       const newPost = await Post.create({
         user_id: req.session.user_id,
-        post_name: req.body.post_name,
-        post_description: req.body.post_description
+        title: req.body.title,
+        content: req.body.content
       });
   
       res.status(200).json(newPost);
